@@ -1,0 +1,49 @@
+.details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .photo {
+    width: 100%;
+    height: auto;
+  }
+  #facebook-icon {
+    color: blue;
+  }
+  
+  #instagram-icon {
+    color: #c13584;
+  }
+  
+  #phone-icon {
+    color: green;
+  }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  
+  .social-icons a:not(:last-child) {
+    margin-right: 100px;
+  }
+  
+  .social-icons svg {
+    font-size: 2rem;
+    color: red;
+    transition: transform 0.3s ease-in-out;
+  }
+  .social-icons svg:hover {
+    transform: rotate(360deg);
+  }
+  
+  

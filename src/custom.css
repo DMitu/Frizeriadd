@@ -1,0 +1,21 @@
+.carousel-container {
+  height: 500px;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  position: relative;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.carousel-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .carousel-container {
+    height: 400px;
+  }
+}
