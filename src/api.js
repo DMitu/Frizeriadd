@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://frizeriadd.onrender.com"; 
+const API_URL = "https://frizeriadd-api.onrender.com"; 
 
 export const createBooking = async (booking) => {
   try {
