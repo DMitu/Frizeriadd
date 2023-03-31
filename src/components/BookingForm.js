@@ -59,7 +59,7 @@ const BookingForm = () => {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get('https://Barbershop-webapp.dmitu.repl.co/booking/');
+      const response = await axios.get('https://frizeriadd.onrender.com/booking/');
       setBookings(response.data);
     } catch (error) {
       console.error(error);
@@ -81,7 +81,7 @@ const BookingForm = () => {
     setLoading(true);
 
     axios
-  .post('https://Barbershop-webapp.dmitu.repl.co/booking/add', bookingData)
+  .post('https://frizeriadd.onrender.com/booking/add', bookingData)
   .then((res) => {
     if (res.status >= 200 && res.status < 300) {
       console.log('Booking created successfully!');
