@@ -75,8 +75,7 @@ const BookingForm = () => {
       customerPhone,
       service,
       date,
-      time,
-      status: 'Pending',
+      time
     };
 
     setLoading(true);
