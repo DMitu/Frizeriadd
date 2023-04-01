@@ -60,6 +60,7 @@ const BookingForm = () => {
   const fetchBookings = async () => {
     try {
       const response = await axios.get('${API_URL}/booking/');
+      console.log(response);
       setBookings(response.data);
     } catch (error) {
       console.error(error);
