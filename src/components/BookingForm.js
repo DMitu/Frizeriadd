@@ -83,7 +83,9 @@ const BookingForm = () => {
     axios
   .post('https://frizeriadd.onrender.com/booking/add', bookingData)
   .then((res) => {
+    console.log(res.status)
     if (res.status == 201) {
+      
       console.log('Booking created successfully!');
       toast.info('Programare realizata cu succes!', {autoClose: 3000});
       history.push('/');
