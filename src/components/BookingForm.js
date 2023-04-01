@@ -82,7 +82,7 @@ const BookingForm = () => {
     setLoading(true);
 
     axios
-  .post('https://frizeriadd.onrender.com/booking/add', bookingData)
+  .post('https://frizeriadd-api.onrender.com/booking/add', bookingData)
   .then((res) => {
     console.log(res.status)
     if (res.status == 200) {
