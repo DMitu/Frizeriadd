@@ -60,7 +60,7 @@ const BookingForm = () => {
   const fetchBookings = async () => {
     try {
       const response = await axios.get('${API_URL}/booking/');
-      console.log(response);
+      console.log(response)
       setBookings(response.data);
     } catch (error) {
       console.error(error);
@@ -85,7 +85,7 @@ const BookingForm = () => {
   .post('https://frizeriadd-api.onrender.com/booking/add', bookingData)
   .then((res) => {
     console.log(res.status)
-    if (res.status == 200) {
+    if (res.status == 200 || res.status == 201) {
       
       console.log('Booking created successfully!');
       toast.info('Programare realizata cu succes!', {autoClose: 3000});
