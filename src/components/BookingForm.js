@@ -102,11 +102,26 @@ const BookingForm = () => {
   });
 
   };
+  const handlePhoneChange = (e) => {
+    let input = e.target.value;
+    // Remove anything that is not a digit or +
+    input = input.replace(/[^0-9+]/g, '');
+    // Remove leading 0
+    if (input.startsWith('0')) {
+      input = input.substring(1);
+    }
+    // Add +40 prefix if not already present
+    if (!input.startsWith('+40')) {
+      input = '+40' + input;
+    }
+    setCustomerPhone(input);
+  };
+
+  const isValidPhone = /^(\+40)?[0-9]{9}$/g.test(customerPhone);
 
   return (
     <div className="container">
       <h3>Crează o programare nouă</h3>
-      {loading && <div className="loading">Loading...</div>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="customerName">Nume:</label>
@@ -120,14 +135,20 @@ const BookingForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="customerPhone">Nr. de telefon (adaugă +40 înainte) :</label>
+          <label htmlFor="customerPhone">
+            Nr. de telefon (adaugă +40 înainte) :
+          </label>
           <input
-            type="tel"        id="customerPhone"
+            type="tel"
+            id="customerPhone"
             required
-            className="form-control"
+            className={`form-control ${isValidPhone ? '' : 'is-invalid'}`}
             value={customerPhone}
-            onChange={(e) => setCustomerPhone(e.target.value)}
+            onChange={handlePhoneChange}
           />
+          {!isValidPhone && (
+            <div className="invalid-feedback">Numărul de telefon nu este valid</div>
+          )}
         </div>
         <div className="form-group">
           <label htmlFor="service">Serviciu:</label>
@@ -147,44 +168,46 @@ const BookingForm = () => {
           <label htmlFor="datePicker">Data:</label>
           <br />
           <DatePicker
-          id="datePicker"
-          selected={date}
-          onChange={(date) => setDate(date)}
-          filterDate={(date) => {
-          const day = date.getDay();
-          return day !== 0 && day !== 1;
-        }}
-          locale={ro}
-          
-        />
-        </div>
-        <div className="form-group">
-          <label htmlFor="time">Ore Disponibile:</label>
-          <select
-            id="time"
-            className="form-control"
-            required
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          >
-            <option value="">-- Alege ora --</option>
-            {availableTimes.map((time) => (
-              <option key={time} value={time}>
-                {time}
-              </option>
-            ))}
-          </select>
-          <br />
-        </div>
-        <div className='buttondiv'>
-        <button type="submit" className="btn btn-primary">
-          Crează Programarea
-        </button>
-        </div>
-      </form>
-    </div>
-  );
-  };
-  
-  export default BookingForm;
+            id="datePicker"
+            selected={date}
+            onChange={(date) => setDate(date)}
+            filterDate={(date) => {
+              const day = date.getDay();
+              return day !== 0 && day        }}
+              locale={ro}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="time">Ore Disponibile:</label>
+            <select
+              id="time"
+              className="form-control"
+              required
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            >
+              <option value="">-- Alege ora --</option>
+              {availableTimes.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))}
+            </select>
+            <br />
+          </div>
+          <div className="buttondiv">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={!isValidPhone}
+            >
+              Crează Programarea
+            </button>
+          </div>
+        </form>
+      </div>
+);
+};
+
+export default BookingForm;      
                 
