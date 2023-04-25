@@ -136,7 +136,7 @@ const BookingForm = () => {
         </div>
         <div className="form-group">
           <label htmlFor="customerPhone">
-            Nr. de telefon (adaugă +40 înainte) :
+            Nr. de telefon:
           </label>
           <input
             type="tel"
